@@ -13,8 +13,9 @@ namespace Kontroller.Controllers
         {
             if (!Config.IsDebug)
             {
-                if (!Otp.Check(Config.OtpKey, token))
-                    return Forbid();
+                if (!string.IsNullOrEmpty(Config.OtpKey))
+                    if (!Otp.Check(Config.OtpKey, token))
+                        return Forbid();
             }
 
             switch (want.ToLower())
