@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Kontroller.Windows
+namespace Kontroller.Helper.Windows
 {
     public class Media
     {
         [DllImport("user32.dll", SetLastError = true)]
-        public static extern void keybd_event(byte virtualKey, byte scanCode, uint flags, IntPtr extraInfo);
+        private static extern void keybd_event(byte virtualKey, byte scanCode, uint flags, IntPtr extraInfo);
 
         public static void Previous()
         {

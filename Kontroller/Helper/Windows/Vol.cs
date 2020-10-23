@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace Kontroller.Windows
+namespace Kontroller.Helper.Windows
 {
     public static class Vol
     {
