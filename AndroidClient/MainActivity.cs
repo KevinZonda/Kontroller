@@ -52,14 +52,7 @@ namespace AndroidClient
         private void Action(string action)
         {
             FlashUI();
-            if (RequestAPI(edtTarget.Text, edtKey.Text, action))
-            {
-                ShowToast("Action success!");
-            }
-            else
-            {
-                ShowToast("Action failed!");
-            }
+            ShowToast(RequestAPI(edtTarget.Text, edtKey.Text, action) ? "Action success!" : "Action failed!");
         }
 
         private void ShowToast(string text, ToastLength toastLength = ToastLength.Short)
