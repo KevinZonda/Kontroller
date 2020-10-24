@@ -51,8 +51,19 @@ namespace AndroidClient
 
         private void Action(string action)
         {
-            // TODO: 
+            FlashUI();
+            if (RequestAPI(edtTarget.Text, edtKey.Text, action))
+            {
+                ShowToast("Action success!");
+            }
+            else
+            {
+                ShowToast("Action failed!");
+            }
         }
+
+        private void ShowToast(string text, ToastLength toastLength = ToastLength.Short)
+            => Toast.MakeText(Application.Context, text, toastLength).Show();
 
         private static string TidyUrl(string url)
         {
