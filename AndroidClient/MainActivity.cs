@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Net;
 using Android.App;
 using Android.OS;
 using Android.Support.V7.App;
@@ -75,6 +77,23 @@ namespace AndroidClient
 
             suffix = suffix.Split("/")[0];
             return prefix + "://" + suffix;
+        }
+
+        private static int GetHttpCode(string url, int timeout = 10000)
+        {
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest) WebRequest.Create(url);
+                request.Timeout = timeout;
+                request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+
+                using var response = (HttpWebResponse) request.GetResponse();
+                return (int) response.StatusCode;
+            }
+            catch
+            {
+                return 400;
+            }
         }
     }
 }
