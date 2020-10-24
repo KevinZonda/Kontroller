@@ -39,6 +39,8 @@ namespace Kontroller.Controllers
                 case "media-stop":
                     Media.Play();
                     break;
+                case "test":
+                    return Ok();
                 default:
                     return BadRequest();
             }
