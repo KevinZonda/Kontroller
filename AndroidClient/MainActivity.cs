@@ -113,8 +113,7 @@ namespace AndroidClient
         {
             var token = (new Totp(Base32Encoding.ToBytes(otpKey))).ComputeTotp();
             var result = GetHttpCode(url + $"/action?token={token}&want={action}");
-            if (result == 200) return true;
-            return false;
+            return result == 200;
         }
 
         private static int GetHttpCode(string url, int timeout = 10000)
