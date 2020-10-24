@@ -11,6 +11,11 @@
             android:hint="TARGET"
             android:id="@+id/edtTarget"/>
     <Button
+            android:text="Test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnTest"/>
+    <Button
             android:text="Vol+"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
