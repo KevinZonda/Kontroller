@@ -11,11 +11,10 @@ namespace Kontroller.Controllers
         [HttpGet]
         public IActionResult Get(string token, string want)
         {
-            if (!Config.IsDebug)
+            if (!Config.IsDebug && !string.IsNullOrEmpty(Config.OtpKey))
             {
-                if (!string.IsNullOrEmpty(Config.OtpKey))
-                    if (!Otp.Check(Config.OtpKey, token))
-                        return Forbid();
+                if (!Otp.Check(Config.OtpKey, token))
+                    return Forbid();
             }
 
             switch (want.ToLower())
