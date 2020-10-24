@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetServer", "NetServer\NetS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndroidClient", "AndroidClient\AndroidClient.csproj", "{46F9225B-B55D-42FD-8F19-573312931F4B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KonfigGUI", "KonfigGUI\KonfigGUI.csproj", "{37F044C5-8127-4997-BA59-960C74349288}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{46F9225B-B55D-42FD-8F19-573312931F4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46F9225B-B55D-42FD-8F19-573312931F4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46F9225B-B55D-42FD-8F19-573312931F4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37F044C5-8127-4997-BA59-960C74349288}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37F044C5-8127-4997-BA59-960C74349288}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37F044C5-8127-4997-BA59-960C74349288}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37F044C5-8127-4997-BA59-960C74349288}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
