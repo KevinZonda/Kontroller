@@ -104,7 +104,9 @@ namespace AndroidClient
 
         private static bool RequestAPI(string url, string otpKey, string action)
         {
-            var token = (new Totp(Base32Encoding.ToBytes(otpKey))).ComputeTotp();
+            var token = string.Empty;
+            if (!string.IsNullOrEmpty(otpKey))
+                token = (new Totp(Base32Encoding.ToBytes(otpKey))).ComputeTotp();
             var result = GetHttpCode(url + $"/action?token={token}&want={action}");
             return result == 200;
         }
