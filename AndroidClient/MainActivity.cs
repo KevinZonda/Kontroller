@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Net;
+
 using Android.App;
 using Android.OS;
 using Android.Support.V7.App;
-using Android.Runtime;
 using Android.Widget;
+
 using OtpNet;
 
 namespace AndroidClient
@@ -47,11 +48,19 @@ namespace AndroidClient
             btnMediaPrev.Click += (s, e) => Action("media-prev");
             btnMediaPlay.Click += (s, e) => Action("media-play");
             btnMediaNext.Click += (s, e) => Action("media-next");
+
+            FlashUI(IOHelper.ReadAllText("serv"));
+
+            edtTarget.AfterTextChanged += EdtTarget_AfterTextChanged;
+        }
+
+        private void EdtTarget_AfterTextChanged(object sender, Android.Text.AfterTextChangedEventArgs e)
+        {
+            FlashUI(edtTarget.Text);
         }
 
         private void Action(string action)
         {
-            FlashUI();
             ShowToast(RequestAPI(edtTarget.Text, edtKey.Text, action) ? "Action success!" : "Action failed!");
         }
 
@@ -99,8 +108,12 @@ namespace AndroidClient
             return prefix + "://" + suffix;
         }
 
-        private void FlashUI()
-            => edtTarget.Text = TidyUrl(edtTarget.Text);
+        private void FlashUI(string m)
+        {
+            string t = TidyUrl(m);
+            edtTarget.Text = t;
+            IOHelper.WriteAllText("serv", t);
+        }
 
         private static bool RequestAPI(string url, string otpKey, string action)
         {
@@ -115,12 +128,12 @@ namespace AndroidClient
         {
             try
             {
-                HttpWebRequest request = (HttpWebRequest) WebRequest.Create(url);
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
                 request.Timeout = timeout;
                 request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
 
-                using var response = (HttpWebResponse) request.GetResponse();
-                return (int) response.StatusCode;
+                using var response = (HttpWebResponse)request.GetResponse();
+                return (int)response.StatusCode;
             }
             catch
             {
